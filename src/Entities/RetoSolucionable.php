@@ -1,20 +1,21 @@
 <?php
+// src/Entities/RetoSolucionable.php
 declare(strict_types=1);
 
 namespace App\Entities;
 
-abstract class RetoSolucionable 
+abstract class RetoSolucionable
 {
     protected string $id;
     protected string $titulo;
     protected string $descripcion;
     protected string $complejidad;
-    protected array $areasConocimiento; 
+    protected array $areasConocimiento;
 
     public function __construct(
-        string $titulo, 
-        string $descripcion, 
-        string $complejidad, 
+        string $titulo,
+        string $descripcion,
+        string $complejidad,
         array $areasConocimiento
     ) {
         $this->titulo = $titulo;
@@ -75,21 +76,6 @@ abstract class RetoSolucionable
         $this->areasConocimiento = $areasConocimiento;
     }
 
-    public function requiereArea(string $area): bool
-    {
-        return in_array($area, $this->areasConocimiento);
-    }
-
-    public function getDificultadNumerica(): int
-    {
-        return match($this->complejidad) {
-            'facil' => 1,
-            'media' => 2,
-            'dificil' => 3,
-            default => 0
-        };
-    }
-
-    // Método abstracto
+    // Método abstracto requerido
     abstract public function getTipo(): string;
 }

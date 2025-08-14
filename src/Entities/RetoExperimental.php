@@ -8,10 +8,10 @@ class RetoExperimental extends RetoSolucionable
     private string $enfoquePedagogico;
 
     public function __construct(
-        string $titulo, 
-        string $descripcion, 
-        string $complejidad, 
-        array $areasConocimiento, 
+        string $titulo,
+        string $descripcion,
+        string $complejidad,
+        array $areasConocimiento,
         string $enfoquePedagogico
     ) {
         parent::__construct($titulo, $descripcion, $complejidad, $areasConocimiento);
@@ -33,11 +33,5 @@ class RetoExperimental extends RetoSolucionable
     public function setEnfoquePedagogico(string $enfoquePedagogico): void
     {
         $this->enfoquePedagogico = $enfoquePedagogico;
-    }
-
-    // Método específico para retos experimentales
-    public function esEnfoqueSTEAM(): bool
-    {
-        return str_contains(strtolower($this->enfoquePedagogico), 'steam');
     }
 }

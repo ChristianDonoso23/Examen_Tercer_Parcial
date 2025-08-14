@@ -1,19 +1,20 @@
 <?php
+// src/Entities/Equipo.php
 declare(strict_types=1);
 
 namespace App\Entities;
 
-class Equipo 
+class Equipo
 {
     private string $id;
     private string $nombre;
     private string $hackathonId;
-    private array $participantes; 
-    private array $retos; 
+    private array $participantes;
+    private array $retos;
 
     public function __construct(
-        string $nombre, 
-        string $hackathonId, 
+        string $nombre,
+        string $hackathonId,
         array $participantes = []
     ) {
         $this->nombre = $nombre;
@@ -28,17 +29,17 @@ class Equipo
         return $this->id;
     }
 
-    public function getNombre(): string 
+    public function getNombre(): string
     {
         return $this->nombre;
     }
 
-    public function getHackathonId(): string 
+    public function getHackathonId(): string
     {
         return $this->hackathonId;
     }
 
-    public function getParticipantes(): array 
+    public function getParticipantes(): array
     {
         return $this->participantes;
     }
@@ -54,20 +55,21 @@ class Equipo
         $this->id = $id;
     }
 
-    public function setNombre(string $nombre): void 
+    public function setNombre(string $nombre): void
     {
         $this->nombre = $nombre;
     }
 
-    public function setHackathonId(string $hackathonId): void 
+    public function setHackathonId(string $hackathonId): void
     {
         $this->hackathonId = $hackathonId;
     }
 
-    public function setParticipantes(array $participantes): void 
+    public function setParticipantes(array $participantes): void
     {
         $this->participantes = $participantes;
     }
+
     public function setRetos(array $retos): void
     {
         $this->retos = $retos;

@@ -9,7 +9,7 @@ abstract class Participante
     protected string $nombre;
     protected string $email;
     protected string $nivelHabilidad;
-    protected array $habilidades; 
+    protected array $habilidades;
 
     public function __construct(
         string $id,
@@ -77,24 +77,6 @@ abstract class Participante
         $this->habilidades = $habilidades;
     }
 
-    // Metodos adicionales para manejar habilidades
-    public function addHabilidad(string $habilidad): void
-    {
-        if (!in_array($habilidad, $this->habilidades)) {
-            $this->habilidades[] = $habilidad;
-        }
-    }
-
-    public function removeHabilidad(string $habilidad): void
-    {
-        $this->habilidades = array_filter($this->habilidades, fn($h) => $h !== $habilidad);
-    }
-
-    public function hasHabilidad(string $habilidad): bool
-    {
-        return in_array($habilidad, $this->habilidades);
-    }
-
-    // Método abstracto que pueden implementar las clases hijas
+    // Método abstracto requerido
     abstract public function getTipo(): string;
 }

@@ -10,13 +10,13 @@ class MentorTecnico extends Participante
     private string $disponibilidadHoraria;
 
     public function __construct(
-        string $id, 
-        string $nombre, 
-        string $email, 
-        string $nivelHabilidad, 
+        string $id,
+        string $nombre,
+        string $email,
+        string $nivelHabilidad,
         array $habilidades,
-        string $especialidad, 
-        int $experiencia, 
+        string $especialidad,
+        int $experiencia,
         string $disponibilidadHoraria
     ) {
         parent::__construct($id, $nombre, $email, $nivelHabilidad, $habilidades);
@@ -52,19 +52,13 @@ class MentorTecnico extends Participante
         $this->especialidad = $especialidad;
     }
 
-    public function setDisponibilidadHoraria(string $disponibilidadHoraria): void
-    {
-        $this->disponibilidadHoraria = $disponibilidadHoraria;
-    }
-
     public function setExperiencia(int $experiencia): void
     {
         $this->experiencia = $experiencia;
     }
 
-    // Método específico para validar experiencia
-    public function esExpertoEn(string $tecnologia): bool
+    public function setDisponibilidadHoraria(string $disponibilidadHoraria): void
     {
-        return $this->experiencia >= 5 && in_array($tecnologia, $this->habilidades);
+        $this->disponibilidadHoraria = $disponibilidadHoraria;
     }
 }

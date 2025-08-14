@@ -10,13 +10,13 @@ class Estudiante extends Participante
     private int $tiempoDisponibleSemanal;
 
     public function __construct(
-        string $id, 
-        string $nombre, 
-        string $email, 
-        string $nivelHabilidad, 
+        string $id,
+        string $nombre,
+        string $email,
+        string $nivelHabilidad,
         array $habilidades,
-        string $grado, 
-        string $institucion, 
+        string $grado,
+        string $institucion,
         int $tiempoDisponibleSemanal
     ) {
         parent::__construct($id, $nombre, $email, $nivelHabilidad, $habilidades);
@@ -60,11 +60,5 @@ class Estudiante extends Participante
     public function setTiempoDisponibleSemanal(int $tiempoDisponibleSemanal): void
     {
         $this->tiempoDisponibleSemanal = $tiempoDisponibleSemanal;
-    }
-
-    // Método específico para validar disponibilidad
-    public function tieneDisponibilidadMinima(int $horasRequeridas): bool
-    {
-        return $this->tiempoDisponibleSemanal >= $horasRequeridas;
     }
 }

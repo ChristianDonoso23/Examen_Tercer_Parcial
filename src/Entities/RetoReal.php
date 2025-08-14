@@ -34,10 +34,4 @@ class RetoReal extends RetoSolucionable
     {
         $this->entidadColaboradora = $entidadColaboradora;
     }
-
-    // Método específico para retos reales
-    public function esDeONG(): bool
-    {
-        return str_contains(strtolower($this->entidadColaboradora), 'ong');
-    }
 }
