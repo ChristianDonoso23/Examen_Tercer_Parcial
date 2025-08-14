@@ -1,4 +1,3 @@
-// equipos.js
 
 const createEquiposPanel = () => {
 

@@ -1,4 +1,3 @@
-// hackathons.js
 
 const createHackathonsPanel = () => {
 

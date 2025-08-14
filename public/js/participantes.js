@@ -1,4 +1,4 @@
-// participantes.js
+
 
 const createParticipantesPanel = () => {
 

@@ -1,7 +1,3 @@
-// app.js - Sistema de Hackathon
-// --------------------------------------------------
-// Carga los paneles y monta un Viewport con navbar
-
 Ext.onReady(() => {
     // Crear cada panel invocando la función de su archivo
     const participantesPanel = createParticipantesPanel();
