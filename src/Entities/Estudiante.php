@@ -1,24 +1,31 @@
 <?php
-
 declare(strict_types=1);
 
 namespace App\Entities;
 
-class Estudiante extends Participante{
-
+class Estudiante extends Participante
+{
     private string $grado;
     private string $institucion;
     private int $tiempoDisponibleSemanal;
 
-    public function __construct(string $id, string $nombre, string $email, string $nivelHabilidad, string $grado, string $institucion, int $tiempoDisponibleSemanal)
-    {
-        parent::__construct($id, $nombre, $email, $nivelHabilidad);
+    public function __construct(
+        string $id, 
+        string $nombre, 
+        string $email, 
+        string $nivelHabilidad, 
+        array $habilidades,
+        string $grado, 
+        string $institucion, 
+        int $tiempoDisponibleSemanal
+    ) {
+        parent::__construct($id, $nombre, $email, $nivelHabilidad, $habilidades);
         $this->grado = $grado;
         $this->institucion = $institucion;
         $this->tiempoDisponibleSemanal = $tiempoDisponibleSemanal;
     }
 
-    /*Getters*/
+    // Getters
     public function getGrado(): string
     {
         return $this->grado;
@@ -33,7 +40,13 @@ class Estudiante extends Participante{
     {
         return $this->tiempoDisponibleSemanal;
     }
-    /*Setters*/
+
+    public function getTipo(): string
+    {
+        return 'estudiante';
+    }
+
+    // Setters
     public function setGrado(string $grado): void
     {
         $this->grado = $grado;
@@ -47,5 +60,11 @@ class Estudiante extends Participante{
     public function setTiempoDisponibleSemanal(int $tiempoDisponibleSemanal): void
     {
         $this->tiempoDisponibleSemanal = $tiempoDisponibleSemanal;
+    }
+
+    // Método específico para validar disponibilidad
+    public function tieneDisponibilidadMinima(int $horasRequeridas): bool
+    {
+        return $this->tiempoDisponibleSemanal >= $horasRequeridas;
     }
 }

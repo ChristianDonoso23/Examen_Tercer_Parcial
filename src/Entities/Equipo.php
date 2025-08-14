@@ -1,48 +1,75 @@
 <?php
-
 declare(strict_types=1);
 
-use App\Entities\Participante;
+namespace App\Entities;
 
 class Equipo 
 {
-    protected string $nombre;
-    protected string $hackathonId;
-    protected Participante $participante;
+    private string $id;
+    private string $nombre;
+    private string $hackathonId;
+    private array $participantes; 
+    private array $retos; 
 
     public function __construct(
         string $nombre, 
         string $hackathonId, 
-        Participante $participante
+        array $participantes = []
     ) {
         $this->nombre = $nombre;
         $this->hackathonId = $hackathonId;
-        $this->participante = $participante;
+        $this->participantes = $participantes;
+        $this->retos = [];
     }
 
-    /*Getters*/
-    public function getNombre(): string {
+    // Getters
+    public function getId(): string
+    {
+        return $this->id;
+    }
+
+    public function getNombre(): string 
+    {
         return $this->nombre;
     }
 
-    public function getHackathonId(): string {
+    public function getHackathonId(): string 
+    {
         return $this->hackathonId;
     }
 
-    public function getParticipante(): Participante {
-        return $this->participante;
+    public function getParticipantes(): array 
+    {
+        return $this->participantes;
     }
 
-    /*Setters*/
-    public function setNombre(string $nombre): void {
+    public function getRetos(): array
+    {
+        return $this->retos;
+    }
+
+    // Setters
+    public function setId(string $id): void
+    {
+        $this->id = $id;
+    }
+
+    public function setNombre(string $nombre): void 
+    {
         $this->nombre = $nombre;
     }
 
-    public function setHackathonId(string $hackathonId): void {
+    public function setHackathonId(string $hackathonId): void 
+    {
         $this->hackathonId = $hackathonId;
     }
 
-    public function setParticipante(Participante $participante): void {
-        $this->participante = $participante;
+    public function setParticipantes(array $participantes): void 
+    {
+        $this->participantes = $participantes;
+    }
+    public function setRetos(array $retos): void
+    {
+        $this->retos = $retos;
     }
 }

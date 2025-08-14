@@ -1,22 +1,34 @@
 <?php
-
 declare(strict_types=1);
 
-abstract class RetoSolucionable {
+namespace App\Entities;
+
+abstract class RetoSolucionable 
+{
+    protected string $id;
     protected string $titulo;
     protected string $descripcion;
     protected string $complejidad;
-    protected string $areasConocimiento;
+    protected array $areasConocimiento; 
 
-    public function __construct(string $titulo, string $descripcion, string $complejidad, string $areasConocimiento)
-    {
+    public function __construct(
+        string $titulo, 
+        string $descripcion, 
+        string $complejidad, 
+        array $areasConocimiento
+    ) {
         $this->titulo = $titulo;
         $this->descripcion = $descripcion;
         $this->complejidad = $complejidad;
         $this->areasConocimiento = $areasConocimiento;
     }
 
-    /*Getters*/
+    // Getters
+    public function getId(): string
+    {
+        return $this->id;
+    }
+
     public function getTitulo(): string
     {
         return $this->titulo;
@@ -32,12 +44,17 @@ abstract class RetoSolucionable {
         return $this->complejidad;
     }
 
-    public function getAreasConocimiento(): string
+    public function getAreasConocimiento(): array
     {
         return $this->areasConocimiento;
     }
 
-    /*Setters*/
+    // Setters
+    public function setId(string $id): void
+    {
+        $this->id = $id;
+    }
+
     public function setTitulo(string $titulo): void
     {
         $this->titulo = $titulo;
@@ -53,8 +70,26 @@ abstract class RetoSolucionable {
         $this->complejidad = $complejidad;
     }
 
-    public function setAreasConocimiento(string $areasConocimiento): void
+    public function setAreasConocimiento(array $areasConocimiento): void
     {
         $this->areasConocimiento = $areasConocimiento;
     }
+
+    public function requiereArea(string $area): bool
+    {
+        return in_array($area, $this->areasConocimiento);
+    }
+
+    public function getDificultadNumerica(): int
+    {
+        return match($this->complejidad) {
+            'facil' => 1,
+            'media' => 2,
+            'dificil' => 3,
+            default => 0
+        };
+    }
+
+    // Método abstracto
+    abstract public function getTipo(): string;
 }

@@ -1,5 +1,4 @@
 <?php
-
 declare(strict_types=1);
 
 namespace App\Entities;
@@ -10,15 +9,23 @@ class MentorTecnico extends Participante
     private int $experiencia;
     private string $disponibilidadHoraria;
 
-    public function __construct(string $id, string $nombre, string $email, string $nivelHabilidad, string $especialidad, int $experiencia, string $disponibilidadHoraria)
-    {
-        parent::__construct($id, $nombre, $email, $nivelHabilidad);
+    public function __construct(
+        string $id, 
+        string $nombre, 
+        string $email, 
+        string $nivelHabilidad, 
+        array $habilidades,
+        string $especialidad, 
+        int $experiencia, 
+        string $disponibilidadHoraria
+    ) {
+        parent::__construct($id, $nombre, $email, $nivelHabilidad, $habilidades);
         $this->especialidad = $especialidad;
         $this->experiencia = $experiencia;
         $this->disponibilidadHoraria = $disponibilidadHoraria;
     }
 
-    /*Getters*/
+    // Getters
     public function getEspecialidad(): string
     {
         return $this->especialidad;
@@ -34,7 +41,12 @@ class MentorTecnico extends Participante
         return $this->disponibilidadHoraria;
     }
 
-    /*Setters*/
+    public function getTipo(): string
+    {
+        return 'mentorTecnico';
+    }
+
+    // Setters
     public function setEspecialidad(string $especialidad): void
     {
         $this->especialidad = $especialidad;
@@ -48,5 +60,11 @@ class MentorTecnico extends Participante
     public function setExperiencia(int $experiencia): void
     {
         $this->experiencia = $experiencia;
+    }
+
+    // Método específico para validar experiencia
+    public function esExpertoEn(string $tecnologia): bool
+    {
+        return $this->experiencia >= 5 && in_array($tecnologia, $this->habilidades);
     }
 }
